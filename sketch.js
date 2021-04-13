@@ -1,4 +1,5 @@
-let string = 'hello';
+
+let current, target, diff, string;
 
 let canvas;
 let font;
@@ -166,16 +167,31 @@ function getRayCast(ray, levels) {
 	return output;
 }
 
-function setup() {
-	canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-	canvas.position(0, 0);
-	canvas.style('z-index', '-1');
-	font = opentype.parse(fontData.bytes.buffer);
+const zeroPad = (num, places) => String(num).padStart(places, '0')
+
+function getCountdown(millis) {
+	let days = Math.floor(millis / 86400000);
+	let hours = Math.floor((millis - days * 86400000) / 3600000);
+	let minutes = Math.floor((millis - days * 86400000 - hours * 3600000) / 60000);
+	let seconds = Math.floor((millis - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);
+	return zeroPad(days, 2) + ":" + zeroPad(hours, 2) + ":" + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+}
+
+function updatePaths(currentTime) {
+	string = getCountdownString(target - currentTime);
 	let outline = getPathOutline(font.getPath(string, 0, 0, 72).commands);
 	paths = outline.paths;
 	boundingBox = {x: outline.xMin, y: outline.yMin, w: outline.xMax - outline.xMin, h: outline.yMax - outline.yMin};
 	getWalls();
 	floodSize = Math.max(windowWidth, windowHeight);
+}
+
+function setup() {
+	canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+	canvas.position(0, 0);
+	canvas.style('z-index', '-1');
+	font = opentype.parse(fontData.bytes.buffer);
+	updatePaths(new Date().getTime());
 }
 
 function getFlood(pos, levels) {
