@@ -178,7 +178,7 @@ function getCountdownString(millis) {
 }
 
 function updatePaths(currentTime) {
-	string = getCountdownString(target - currentTime);
+	let string = getCountdownString(target - currentTime);
 	let outline = getPathOutline(font.getPath(string, 0, 0, 72).commands);
 	paths = outline.paths;
 	boundingBox = {x: outline.xMin, y: outline.yMin, w: outline.xMax - outline.xMin, h: outline.yMax - outline.yMin};
