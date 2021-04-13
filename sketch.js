@@ -169,7 +169,7 @@ function getRayCast(ray, levels) {
 
 const zeroPad = (num, places) => String(num).padStart(places, '0')
 
-function getCountdown(millis) {
+function getCountdownString(millis) {
 	let days = Math.floor(millis / 86400000);
 	let hours = Math.floor((millis - days * 86400000) / 3600000);
 	let minutes = Math.floor((millis - days * 86400000 - hours * 3600000) / 60000);
