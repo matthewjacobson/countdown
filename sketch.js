@@ -254,8 +254,8 @@ function draw() {
 // 	}
 	noStroke();
 	let blurRadius = 10;
-	let blurCount = 3;
-	let floodLevels = 6;
+	let blurCount = 0;
+	let floodLevels = 10;
  	for (let i = -1; i < blurCount; i++) {
  		let x = mouseX;
  		let y = mouseY;
