@@ -268,7 +268,7 @@ function draw() {
 	 	for (let l = floodLevels - 1; l >= 0; l--) {
 	 		beginShape(TRIANGLE_FAN);
 // 	 			fill(255 / (l + 1));
-				fill(map(l, 0, floodLevels - 1, 255, 100));
+				fill(map(l, 0, floodLevels - 1, 255, 0));
 	 			vertex(mouseX, mouseY);
 	 			for (let i = 0; i < flood[l].length; i++) {
 	 				let distance = dist(mouseX, mouseY, flood[l][i].x, flood[l][i].y);
