@@ -167,14 +167,12 @@ function getRayCast(ray, levels) {
 	return output;
 }
 
-const zeroPad = (num, places) => String(num).padStart(places, '0')
-
 function getCountdownString(millis) {
 	let days = Math.floor(millis / 86400000);
 	let hours = Math.floor((millis - days * 86400000) / 3600000);
 	let minutes = Math.floor((millis - days * 86400000 - hours * 3600000) / 60000);
 	let seconds = Math.floor((millis - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);
-	return zeroPad(days, 2) + ":" + zeroPad(hours, 2) + ":" + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+	return days + " days\n" + hours + " hours\n" + minutes + " minutes\n" + seconds + " seconds";
 }
 
 function updatePaths(currentTime) {
@@ -200,7 +198,7 @@ function getFlood(pos, levels) {
 		let level = [];
 		flood.push(level);
 	}
-	let countSamples = 25;
+	let countSamples = 50;
 	for (let i = 0; i < countSamples; i++) {
 		let angle = 2 * Math.PI * i / countSamples - Math.PI;
 		let ray = {x: pos.x, y: pos.y, dx: floodSize * Math.cos(angle), dy: floodSize * Math.sin(angle)};
@@ -254,7 +252,7 @@ function draw() {
 	noStroke();
 	let blurRadius = 10;
 	let blurCount = 0;
-	let floodLevels = 2;
+	let floodLevels = 6;
  	for (let i = -1; i < blurCount; i++) {
  		let x = mouseX;
  		let y = mouseY;
