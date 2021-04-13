@@ -200,7 +200,7 @@ function getFlood(pos, levels) {
 		let level = [];
 		flood.push(level);
 	}
-	let countSamples = 50;
+	let countSamples = 25;
 	for (let i = 0; i < countSamples; i++) {
 		let angle = 2 * Math.PI * i / countSamples - Math.PI;
 		let ray = {x: pos.x, y: pos.y, dx: floodSize * Math.cos(angle), dy: floodSize * Math.sin(angle)};
