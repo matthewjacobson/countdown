@@ -1,5 +1,5 @@
 
-let current, target, diff, string;
+let target = new Date('April 16, 2021 12:00:00';
 
 let canvas;
 let font;
