@@ -245,6 +245,7 @@ function getFlood(pos, levels) {
 }
 
 function draw() {
+	updatePaths(new Date().getTime());
 	background(0);
 	stroke(255);
 	translate(-windowWidth / 2, -windowHeight / 2);
