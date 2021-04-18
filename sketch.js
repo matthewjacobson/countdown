@@ -1,5 +1,5 @@
 
-let target = new Date('April 16, 2021 12:00:00');
+let target = new Date('April 23, 2021 12:00:00');
 
 let canvas;
 let font;
@@ -255,7 +255,7 @@ function draw() {
 	noStroke();
 	let blurRadius = 10;
 	let blurCount = 0;
-	let floodLevels = 10;
+	let floodLevels = 15;
  	for (let i = -1; i < blurCount; i++) {
  		let x = mouseX;
  		let y = mouseY;
