@@ -1,5 +1,5 @@
 
-let target = new Date('April 26, 2021 16:00:00');
+let target = 1619802000000; // GMT unix timestamp in millis
 
 let canvas;
 let font;
@@ -187,11 +187,17 @@ function updatePaths(currentTime) {
 }
 
 function setup() {
+	
+	let d = new Date();
+	let localTime = d.getTime();
+	let localOffset = d.getTimezoneOffset() * 60000;
+	let utc = localTime + localOffset;
+	
 	canvas = createCanvas(windowWidth, windowHeight, WEBGL);
 	canvas.position(0, 0);
 	canvas.style('z-index', '-1');
 	font = opentype.parse(fontData.bytes.buffer);
-	updatePaths(new Date().getTime());
+	updatePaths(utc);
 }
 
 function getFlood(pos, levels) {
